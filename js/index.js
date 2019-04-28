@@ -44,15 +44,19 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
-        printerSelfChecking(function success(data){
+        alert('Received Event: ' + id);
+        printerInit().then(function(data){
             console.log("OK");
             console.log(data);
-            alert('ok');
-            alert(data);
-        }, function error(err){
-            console.log(err);
-            alert('error');
+        }, function (err){
+            alert("error");
+            alert(err);
+        });
+        printerSelfChecking().then(function(data){
+            console.log("OK");
+            console.log(data);
+        }, function (err){
+            alert("error");
             alert(err);
         });
     }
